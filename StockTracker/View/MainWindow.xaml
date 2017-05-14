@@ -13,7 +13,8 @@
     mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
@@ -25,6 +26,7 @@
             <Label DockPanel.Dock="Left" Content="Stock Ticker: "/>
                 <dxe:ComboBoxEdit DockPanel.Dock="Left" Text="{Binding SelectedTicker}"
                               ItemsSource="{Binding TickerList}"
+                              MaxWidth="200"
                               >
                 
             </dxe:ComboBoxEdit>
@@ -33,21 +35,39 @@
 
         </Grid>
 
-        <Grid Grid.Column="1">
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <dxg:GridControl Grid.Row="0" Grid.Column="1" 
-                         MaxHeight="600">
-            <dxg:GridColumn FieldName="AsOfDate" MinWidth="100" Width="*" Header="AsOfDate" />
-            <dxg:GridColumn FieldName="Price_Low" MinWidth="100" Width="*" Header="Price_Low" />
-            <dxg:GridColumn FieldName="Price_High" MinWidth="100" Width="*" Header="Price_High" />
-            <dxg:GridColumn FieldName="Price_Close" MinWidth="100" Width="*" Header="Price_Close" />
-        </dxg:GridControl>
+                             MaxHeight="500"
+                             ItemsSource="{Binding StockPrice}"  
+                             
+                             >
 
-        <dxc:ChartControl Grid.Row="1" Grid.Column="1">
-            
+                <dxg:GridColumn FieldName="Date" MinWidth="100" Width="*" Header="AsOfDate" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Low" MinWidth="100" Width="*" Header="Price_Low" ReadOnly="True" />
+                <dxg:GridColumn FieldName="High" MinWidth="100" Width="*" Header="Price_High" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Close" MinWidth="100" Width="*" Header="Price_Close" ReadOnly="True" />
+                <dxg:GridControl.View>
+                    <dxg:TableView ShowGroupPanel="True" ShowAutoFilterRow="True" />
+                </dxg:GridControl.View>
+
+            </dxg:GridControl>
+
+
+            <dxc:ChartControl Grid.Row="1" Grid.Column="1">
+                <dxc:XYDiagram2D>
+                    <dxc:XYDiagram2D.Series>
+                        <dxc:LineSeries2D 
+                                          DisplayName="History Price" DataSource ="{Binding StockPrice}"
+                                          ArgumentDataMember="Date" ArgumentScaleType="DateTime"
+                                          ValueDataMember="Close" ValueScaleType="Numerical"/>
+                    </dxc:XYDiagram2D.Series>
+                </dxc:XYDiagram2D>
         </dxc:ChartControl>
         </Grid>
     </Grid>
