@@ -19,12 +19,11 @@ namespace StockTracker.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StockTrackerView : Window
     {
-        public MainWindow()
+        public StockTrackerView(StockTrackerViewModel stvm)
         {
             InitializeComponent();
-            var stvm = new StockTrackerViewModel();
             this.DataContext = stvm;
         }
     }
