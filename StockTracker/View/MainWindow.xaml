@@ -1,0 +1,55 @@
+﻿<Window x:Class="StockTracker.View.MainWindow"     
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+ xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxdb="http://schemas.devexpress.com/winfx/2008/xaml/demobase"
+    xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+    mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0">
+            <Label DockPanel.Dock="Left" Content="Stock Ticker: "/>
+                <dxe:ComboBoxEdit DockPanel.Dock="Left" Text="{Binding SelectedTicker}"
+                              ItemsSource="{Binding TickerList}"
+                              >
+                
+            </dxe:ComboBoxEdit>
+        </DockPanel>
+            <Button Grid.Row="1" MaxHeight="100" MaxWidth="100" Content="RUN" Command="{Binding Run}"/>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <dxg:GridControl Grid.Row="0" Grid.Column="1" 
+                         MaxHeight="600">
+            <dxg:GridColumn FieldName="AsOfDate" MinWidth="100" Width="*" Header="AsOfDate" />
+            <dxg:GridColumn FieldName="Price_Low" MinWidth="100" Width="*" Header="Price_Low" />
+            <dxg:GridColumn FieldName="Price_High" MinWidth="100" Width="*" Header="Price_High" />
+            <dxg:GridColumn FieldName="Price_Close" MinWidth="100" Width="*" Header="Price_Close" />
+        </dxg:GridControl>
+
+        <dxc:ChartControl Grid.Row="1" Grid.Column="1">
+            
+        </dxc:ChartControl>
+        </Grid>
+    </Grid>
+
+</Window>

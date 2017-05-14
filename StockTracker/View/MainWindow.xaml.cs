@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StockTracker.ViewModel;
 
-namespace StockTracker
+namespace StockTracker.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +24,8 @@ namespace StockTracker
         public MainWindow()
         {
             InitializeComponent();
+            var stvm = new StockTrackerViewModel();
+            this.DataContext = stvm;
         }
     }
 }

@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTracker", "StockTracker\StockTracker.csproj", "{F03DFC7A-339A-40A6-A813-74F8AB23470B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StockTrackerView", "StockTrackerView", "{C40062DE-1F44-4D23-A148-0B70FA87FE71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StockTrackerViewModel", "StockTrackerViewModel", "{5E64C933-C3E4-446E-889A-3F23210404B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StockTrackerServiceRepository", "StockTrackerServiceRepository", "{BC0E69E5-AEBD-476A-9966-5E98C962BD8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F03DFC7A-339A-40A6-A813-74F8AB23470B} = {C40062DE-1F44-4D23-A148-0B70FA87FE71}
 	EndGlobalSection
 EndGlobal
